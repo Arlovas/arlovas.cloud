@@ -2,12 +2,12 @@ name: Deploy to Hostinger
 
 on:
   push:
-    branches: [main, production]
+    branches:
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
@@ -16,6 +16,6 @@ jobs:
         with:
           api-key: ${{ secrets.HOSTINGER_API_KEY }}
           virtual-machine: ${{ secrets.HOSTINGER_VM_ID }}
-          project-name: my-awesome-app
+          project-name: arlovas
           personal-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           docker-compose-path: docker-compose.yml
