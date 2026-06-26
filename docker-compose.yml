@@ -1,6 +1,6 @@
 services:
   web:
-    container_name: arlovas.cloud
+    container_name: arlovascloud
     build: .
     restart: unless-stopped
     ports:
