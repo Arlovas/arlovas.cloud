@@ -7,21 +7,11 @@ on:
 jobs:
     deploy:
         runs-on: ubuntu-latest
-
         steps:
             - uses: actions/checkout@v5
-
-            - name: Debug workspace
-              run: |
-                  pwd
-                  ls -la
-                  find . -maxdepth 3 \( -name "docker-compose.yml" -o -name "compose.yml" \)
 
             - name: Deploy to Hostinger
               uses: hostinger/deploy-on-vps@v2
               with:
                   api-key: ${{ secrets.HOSTINGER_API_KEY }}
-                  virtual-machine: ${{ secrets.HOSTINGER_VM_ID }}
-                  project-name: arlovascloud
-                  personal-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-                  docker-compose-path: docker-compose.yml
+                  virtual-machine: ${{ vars.HOSTINGER_VM_ID }}
