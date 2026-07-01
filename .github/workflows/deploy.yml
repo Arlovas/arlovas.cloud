@@ -2,19 +2,19 @@ name: Deploy to Hostinger
 
 on:
     push:
-        branches: [ main, production ]
+        branches: [main, production]
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v5
 
-      - name: Deploy to Hostinger
-        uses: hostinger/deploy-action@v1
-        with:
-          api-key: ${{ secrets.HOSTINGER_API_KEY }}
-          virtual-machine: ${{ secrets.HOSTINGER_VM_ID }}
-          project-name: arlovascloud
-          personal-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          docker-compose-path: docker-compose.yml
+            - name: Deploy to Hostinger
+              uses: hostinger/deploy-action@v1
+              with:
+                  api-key: ${{ secrets.HOSTINGER_API_KEY }}
+                  virtual-machine: ${{ secrets.HOSTINGER_VM_ID }}
+                  project-name: arlovascloud
+                  personal-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+                  docker-compose-path: docker-compose.yml
